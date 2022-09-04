@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { CardService } from './card.service';
 
 @Component({
   selector: 'app-card',
@@ -8,13 +10,19 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CardComponent implements OnInit {
 
   @Input() card;
-  constructor() { }
+  constructor(private cardService: CardService) { }
 
   ngOnInit() {
   }
 
+  get loading () {
+    return this.cardService.loading;
+  }
+
   onLike(card: any){
-    // TODO: incrementar o like, salvar via rest
+    this.cardService.like(card.id).then(cardAtualizado => {
+      this.card = cardAtualizado;
+    });
   }
 
   onShare(card: any){

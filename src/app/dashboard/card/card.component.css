@@ -1,3 +1,16 @@
-.example-card {
-    max-width: 400px;
-  }
+.card {
+  max-width: 400px;
+  cursor: pointer;
+}
+
+.card:hover {
+  filter: grayscale(80%);
+}
+
+.counter-blue {
+  color: blue;
+}
+
+.counter-tabby {
+  color: #cea18b;
+}
